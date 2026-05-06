@@ -8,33 +8,33 @@ const Blog = ({ blog, updateLikes, deleteBlog, loggedUserId }) => {
   }
 
   return (
-    <div className='blog'>
-      <div className='blog-top'>
-        <div className='blog-info'>
-          <span className='blog-title'>{blog.title}</span>
-          <span className='blog-author'>{blog.author}</span>
+    <div className="blog">
+      <div className="blog-top">
+        <div className="blog-info">
+          <span className="blog-title">{blog.title}</span>
+          <span className="blog-author">{blog.author}</span>
         </div>
 
-        <button className='btn-toggle' onClick={toggleVisibility}>
-          {visible ? 'Hide details' : 'View details'}
+        <button id="toggleDetails" className="btn-toggle" onClick={toggleVisibility}>
+          {visible ? "Hide details" : "View details"}
         </button>
       </div>
 
       {visible && (
-        <div className='blog-details'>
-          <div className='blog-meta'>
+        <div className="blog-details">
+          <div className="blog-meta">
             <p>{blog.url}</p>
             <p>{blog.user.name}</p>
           </div>
 
-          <div className='blog-actions'>
-            <div className='likes-section'>
-              <p>likes: {blog.likes}</p>
+          <div className="blog-actions">
+            <div className="likes-section">
+              <p>Likes: {blog.likes}</p>
               <button onClick={() => updateLikes(blog)}>Like</button>
             </div>
 
             {blog.user.id === loggedUserId && (
-              <button className='btn-delete' onClick={() => deleteBlog(blog)}>
+              <button className="btn-delete" onClick={() => deleteBlog(blog)}>
                 Delete
               </button>
             )}
@@ -42,7 +42,7 @@ const Blog = ({ blog, updateLikes, deleteBlog, loggedUserId }) => {
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export default Blog

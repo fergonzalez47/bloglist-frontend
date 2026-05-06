@@ -31,28 +31,40 @@ const CreateBlog = ({ handleCreateBlog }) => {
         <div>
           Title
           <input
-            type='text'
+            id="inputTitle"
+            type="text"
             value={title}
-            name='Title'
+            name="Title"
             onChange={onTitleChange}
+            placeholder="Blog..."
           />
         </div>
         <div>
           Author
           <input
-            type='text'
+            id="inputAuthor"
+            type="text"
             value={author}
-            name='Author'
+            name="Author"
             onChange={onAuthorChange}
+            placeholder="Author..."
           />
         </div>
         <div>
-          Url <input type='url' value={url} name='Url' onChange={onUrlChange} />
+          Url{" "}
+          <input
+            id="inputUrl"
+            type="url"
+            value={url}
+            name="Url"
+            onChange={onUrlChange}
+            placeholder="http://example.com/"
+          />
         </div>
-        <button type='submit'>Create</button>
+        <button type="submit">Create</button>
       </form>
     </>
-  )
+  );
 }
 
 export default CreateBlog

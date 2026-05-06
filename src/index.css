@@ -302,3 +302,60 @@ input[type="text"] {
     border-radius: 8px;
 }
 
+
+
+/* =========================
+   HEADER
+========================= */
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.app-title {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.app-subtitle {
+    margin: 6px 0 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f9fafb;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-logout {
+    background: #111827;
+}
+
+.btn-logout:hover {
+    background: #000;
+}
+
+.blog-list {
+    margin-top: 18px;
+}
+
+.login-section {
+    text-align: center;
+    margin-bottom: 20px;
+}

@@ -9,17 +9,31 @@ const LoginForm = ({
     <form onSubmit={handleLogin} className="login-form">
       <div>
         <label>username</label>
-        <input type="text" value={username} onChange={onUsernameChange} />
+        <input
+          data-testid="username"
+          type="text"
+          value={username}
+          onChange={onUsernameChange}
+          placeholder="Username"
+        />
       </div>
 
       <div>
         <label>password</label>
-        <input type="password" value={password} onChange={onPasswordChange} />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={onPasswordChange}
+          data-testid="password"
+        />
       </div>
 
-      <button type="submit">Login</button>
+      <button data-testid="Login-btn" type="submit">
+        Login
+      </button>
     </form>
-  )
+  );
 }
 
 export default LoginForm

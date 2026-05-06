@@ -5,6 +5,7 @@ import loginService from './services/login'
 import LoginForm from './components/loginForm'
 import CreateBlog from './components/CreateBlog'
 import Togglable from './components/Togglable'
+import Header from "./components/Header";
 
 const Notification = ({ message }) => {
   if (message === null) {
@@ -14,13 +15,13 @@ const Notification = ({ message }) => {
   return <div className={`${message.type}`}>{message.text}</div>
 }
 
-const Logout = ({ logout }) => {
-  return (
-    <>
-      <button onClick={logout}>Logout</button>
-    </>
-  )
-}
+// const Logout = ({ logout }) => {
+//   return (
+//     <>
+//       <button onClick={logout}>Logout</button>
+//     </>
+//   )
+// }
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
@@ -181,12 +182,17 @@ const App = () => {
       setTimeout(() => setMessage(null), 5000)
     }
   }
-  return (
-    <div>
-      {user === null ? (
-        <>
-          <Notification message={message} />
-          <Togglable buttonLabel='login'>
+return (
+  <div>
+    {user === null ? (
+      <>
+        <Notification message={message} />
+
+        <div className="login-section">
+          <h1 className="app-title">Blogs</h1>
+          <p className="app-subtitle">Sign in to continue</p>
+
+          <Togglable buttonLabel="login">
             <LoginForm
               handleLogin={handleLogin}
               username={username}
@@ -195,35 +201,33 @@ const App = () => {
               onPasswordChange={handlePasswordChange}
             />
           </Togglable>
-          {/* <button onClick={() => setLoginVisible(false)}>cancel</button> */}
-        </>
-      ) : (
-        <div>
-          <h1>blogs</h1>
-          <div>
-            <h2>{user.name} Logged-in</h2>
-            <Logout logout={handleLogout} />
-            <Notification message={message} />
-          </div>
-          <Togglable buttonLabel='Add new blog' ref={blogFormRef}>
-            <CreateBlog handleCreateBlog={handleCreateBlog} />
-          </Togglable>
-
-          <div>
-            {blogs.map((blog) => (
-              <Blog
-                key={blog.id}
-                blog={blog}
-                updateLikes={handleUpdateBlogLike}
-                deleteBlog={handleDeleteBlog}
-                loggedUserId={user.id}
-              />
-            ))}
-          </div>
         </div>
-      )}
-    </div>
-  )
+      </>
+    ) : (
+      <>
+        <Header user={user} logout={handleLogout} />
+
+        <Notification message={message} />
+
+        <Togglable buttonLabel="Add new blog" ref={blogFormRef}>
+          <CreateBlog handleCreateBlog={handleCreateBlog} />
+        </Togglable>
+
+        <div className="blog-list">
+          {blogs.map((blog) => (
+            <Blog
+              key={blog.id}
+              blog={blog}
+              updateLikes={handleUpdateBlogLike}
+              deleteBlog={handleDeleteBlog}
+              loggedUserId={user.id}
+            />
+          ))}
+        </div>
+      </>
+    )}
+  </div>
+);
 }
 
 export default App
